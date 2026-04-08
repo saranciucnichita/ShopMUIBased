@@ -1,0 +1,36 @@
+{
+  "layout": {
+    "navbar_msg": {
+      "promo": "Promotions",
+      "about": "About us",
+      "mission": "Our mission"
+    },
+    "settings": {
+      "profile": "Profile",
+      "account": "Account",
+      "cart": "Cart",
+      "logout": "Logout"
+    },
+    "search": "Search",
+    "searchbar_placeholder": "Seek for everything you want..."
+  },
+
+  
+  "home": {
+    "welcome_message": "Internet shop of electronics and home appliances",
+    "special_offers": "Special Offers",
+    "categories": {
+      "smartphone": "Smartphone",
+      "headphones": "Headphones",
+      "washing_machines": "Washing machines",
+      "televisions": "Televisions",
+      "smartwatches": "Smartwatches"
+    },
+    "promo_desc": {
+      "cart": "Add to cart",
+      "go_to_item": "Go to page",
+      "oxm9c3": "Not for everyone. Just for you.",
+      "4c9t7n": "Why wait? This TV is not available for just anyone!"
+    }
+  }
+}

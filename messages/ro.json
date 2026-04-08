@@ -1,0 +1,36 @@
+{
+  "layout": {
+    "navbar_msg": {
+      "promo": "Promoții",
+      "about": "Despre noi",
+      "mission": "Misiunea noastră"
+    },
+    "settings": {
+      "profile": "Profilul",
+      "account": "Contul",
+      "cart": "Coș",
+      "logout": "Deconectare"
+    },
+    "search": "Caută",
+    "searchbar_placeholder": "Deschide tot ce vrei..."
+  },
+
+  
+  "home": {
+    "welcome_message": "Internet magazin de electronice și electrocasnice.",
+    "special_offers": "Oferte speciale",
+    "categories": {
+      "smartphone": "Smartphone",
+      "headphones": "Căști",
+      "washing_machines": "Mașini de spălat",
+      "televisions": "Televizoare",
+      "smartwatches": "Ceasuri inteligente"
+    },
+    "promo_desc": {
+      "cart": "Adaug în coș",
+      "go_to_item": "Trec pe pagina",
+      "oxm9c3": "Nu pentru toți. Numai pentru tine.",
+      "4c9t7n": "De ce aștepți? Acest TV nu este disponibil pentru oricine!"
+    }
+  }
+}

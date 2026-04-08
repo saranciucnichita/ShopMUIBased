@@ -1,0 +1,25 @@
+#categories {
+padding: 40px 100px; /* Vertical and Horizontal padding */
+  display: flex;       /* Put buttons in a row */
+  flex-wrap: wrap;     /* Wrap to next line if screen is small */
+  gap: 15px;           /* Space between buttons */
+  justify-content: center; /* Center them horizontally */
+}
+
+.banners {
+    width: 40%;
+    margin: 20px 40px auto auto;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.banners:hover {
+  scale: 1.05;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+#sales {
+  padding-left: 15%;
+  padding-bottom: 5%;
+}
