@@ -51,28 +51,30 @@ export default function HomeComponent() {
       </div>
 
       <h1 id="special-offers">{t('home.special_offers')}</h1>
-      <Grid container spacing={2} sx={{ justifyContent: 'center' }}> {/* spacing adds a gap between cards */}
-        <Grid sx={{ display: 'flex'}}>
+      <Grid container spacing={2} sx={{ justifyContent: 'center', '& > .MuiGrid-root': { display: 'flex' } }}> {/* spacing adds a gap between cards */}
+        <Grid>
           <MediaCard
             item="TV PANASONIC 4LJBT3"
             desc="Performant. Elegant. Brilliant."
             image="/static/images/cards/tvcard1.jpg"
+            href="/products/tv/panasonic-4ljbt3"
           />
         </Grid>
-        <Grid sx={{ display: 'flex'}}>
+        <Grid>
           <MediaCard
             item="TV KONKA OXM9C3YT9"
             desc={t('home.promo_desc.oxm9c3')}
             image="/static/images/cards/tvcard3.jpg"
+            href="/products/tv/konka-oxm9c3yt9"
           />
         </Grid>
-        <Grid sx={{ display: 'flex'}}>
+        <Grid>
           <MediaCard
             item="TV ROLSEN 4C9T7N"
             desc={t('home.promo_desc.4c9t7n')}
             image="/static/images/cards/tvcard2.jpg"
+            href="/products/tv/rolsen-4c9t7n"
           />
-
         </Grid>
       </Grid>
     </div>
