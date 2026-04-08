@@ -69,6 +69,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const [item, setItem] = useState(0);
+
     const { t } = useTranslation();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -135,7 +137,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show orders" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={item} color="error">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -183,7 +185,7 @@ export default function PrimarySearchAppBar() {
 
     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show orders" color="inherit">
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={item} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>

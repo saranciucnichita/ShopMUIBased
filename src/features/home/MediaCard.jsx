@@ -9,7 +9,7 @@ import '../../i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
-export default function MediaCard({ item, desc, image, href }) {
+export default function MediaCard({ item, desc, image, href, setItem }) {
   const { t } = useTranslation();
 
   return (
@@ -36,7 +36,7 @@ export default function MediaCard({ item, desc, image, href }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" variant="contained">
+        <Button size="small" variant="contained" onClick={() => setItem(item => item + 1)}>
           {t('home.promo_desc.cart')}
         </Button>
       </CardActions>

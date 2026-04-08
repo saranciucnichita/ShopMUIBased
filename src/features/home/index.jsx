@@ -74,6 +74,7 @@ export default function HomeComponent() {
             desc={t('home.promo_desc.4c9t7n')}
             image="/static/images/cards/tvcard2.jpg"
             href="/products/tv/rolsen-4c9t7n"
+            
           />
         </Grid>
       </Grid>
