@@ -11,13 +11,14 @@ export default function MediaCard({item, desc, image}) {
   const { t } = useTranslation();
 
   return (
-    <Card sx={{ maxWidth: 345, display: 'inline-block', margin: '10px', padding: '10px', width: '100%'}}>
+    <Card sx={{ maxWidth: 345, display: 'block', margin: '10px', padding: '10px', width: '100%', display: 'flex', 
+  flexDirection: 'column'}}>
       <CardMedia
         sx={{ height: 240, backgroundSize: 'contain', marginTop: '10px'}}
         image={image}
         title="Product"
       />
-      <CardContent>
+      <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="div">
           {item}
         </Typography>
@@ -27,7 +28,6 @@ export default function MediaCard({item, desc, image}) {
       </CardContent>
       <CardActions>
         <Button size="small" variant="contained">{t('home.promo_desc.cart')}</Button>
-        <Button size="small">{t('home.promo_desc.go_to_item')}</Button>
       </CardActions>
     </Card>
   );

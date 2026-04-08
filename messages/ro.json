@@ -1,5 +1,13 @@
 {
   "layout": {
+    "accessibility": {
+      "skip_to_content": "Sari la conținut"
+    },
+    "language": {
+      "select": "Selectați limba",
+      "english": "Engleză",
+      "romanian": "Română"
+    },
     "navbar_msg": {
       "promo": "Promoții",
       "about": "Despre noi",
@@ -15,7 +23,6 @@
     "searchbar_placeholder": "Deschide tot ce vrei..."
   },
 
-  
   "home": {
     "welcome_message": "Internet magazin de electronice și electrocasnice.",
     "special_offers": "Oferte speciale",
@@ -28,7 +35,6 @@
     },
     "promo_desc": {
       "cart": "Adaug în coș",
-      "go_to_item": "Trec pe pagina",
       "oxm9c3": "Nu pentru toți. Numai pentru tine.",
       "4c9t7n": "De ce aștepți? Acest TV nu este disponibil pentru oricine!"
     }

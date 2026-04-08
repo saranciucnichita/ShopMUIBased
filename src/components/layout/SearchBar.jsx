@@ -61,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(green[500]),
+  color: theme.palette.getContrastText(green[600]),
   backgroundColor: green[500],
   '&:hover': {
     backgroundColor: green[700],

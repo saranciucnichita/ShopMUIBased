@@ -1,5 +1,6 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
+const js = require("@eslint/js");
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -11,6 +12,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  js.configs.recommended,
 ]);
 
 export default eslintConfig;

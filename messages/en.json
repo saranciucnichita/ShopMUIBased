@@ -1,5 +1,13 @@
 {
   "layout": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    },
+    "language": {
+      "select": "Select language",
+      "english": "English",
+      "romanian": "Romanian"
+    },
     "navbar_msg": {
       "promo": "Promotions",
       "about": "About us",
@@ -28,7 +36,6 @@
     },
     "promo_desc": {
       "cart": "Add to cart",
-      "go_to_item": "Go to page",
       "oxm9c3": "Not for everyone. Just for you.",
       "4c9t7n": "Why wait? This TV is not available for just anyone!"
     }
