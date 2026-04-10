@@ -33,6 +33,7 @@ export default function NavBar() {
   const router = useRouter();
   const { i18n, t } = useTranslation();
   const pages = [t('layout.navbar_msg.promo'), "Credit", t('layout.navbar_msg.about'), t('layout.navbar_msg.mission')];
+  const links = ['/promo', '/credit', '/about', '/mission'];
   const settings = [t('layout.settings.profile'), t('layout.settings.account'), t('layout.settings.cart'), t('layout.settings.logout')];
   const languages = [
     { label: t('layout.language.english'), code: 'en' },
@@ -62,9 +63,11 @@ export default function NavBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (link) => {
     setAnchorElNav(null);
-    router.push('/promo');
+  if (link) {
+    router.push(link);
+  }
   };
 
   const handleCloseUserMenu = () => {
@@ -176,10 +179,10 @@ const SkipLink = styled('a')({
             ELECTRO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleCloseNavMenu(links[index])}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
