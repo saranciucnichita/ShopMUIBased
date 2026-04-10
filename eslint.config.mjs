@@ -4,6 +4,7 @@ const js = require("@eslint/js");
 
 const eslintConfig = defineConfig([
   ...nextVitals,
+  js.configs.recommended,
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
@@ -12,7 +13,6 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
-  js.configs.recommended,
 ]);
 
 export default eslintConfig;
