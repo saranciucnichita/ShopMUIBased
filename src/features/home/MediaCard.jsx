@@ -16,7 +16,12 @@ export default function MediaCard({ item, desc, image, href }) {
   return (
     <Card sx={{
       maxWidth: 345, display: 'block', margin: '10px', padding: '10px', width: '100%', display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      transition: 'transform 0.1s ease-in-out',
+      '&:hover': {
+        transition: 'transform 0.3s ease-in-out',
+        transform: 'scale(1.05)',
+      },
     }}>
       <CardActionArea
         component={Link}
