@@ -1,6 +1,6 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
-const js = require("@eslint/js");
+import js from "@eslint/js";
 
 const eslintConfig = defineConfig([
   ...nextVitals,

@@ -10,6 +10,7 @@ import TvIcon from '@mui/icons-material/TvOutlined';
 import WatchIcon from '@mui/icons-material/WatchOutlined';
 import MediaCard from "@/features/home/MediaCard.jsx";
 import Grid from '@mui/material/Grid';
+import Image from 'next/image'
 
 import ScrollTop from "@/features/home/ScrollTopButton.jsx";
 import Fab from '@mui/material/Fab';
@@ -50,8 +51,8 @@ export default function HomeComponent() {
         >{t('home.categories.smartwatches')}</ListItemButton>
       </div>
       <div id={styles.sales}>
-        <img className={styles.banners} src="/sale.png" alt="Sale banner"></img>
-        <img className={styles.banners} src="/sale2.jpg" alt="Second sale banner"></img>
+        <Image className={styles.banners} src="/sale.png" alt="Sale banner" width={1662} height={574}/>
+        <Image className={styles.banners} src="/sale2.jpg" alt="Second sale banner" width={2894} height={1006}/>
       </div>
 
       <h1 id="special-offers">{t('home.special_offers')}</h1>

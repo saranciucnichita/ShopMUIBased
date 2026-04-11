@@ -1,11 +1,11 @@
 "use client";
 
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import '../i18n/i18n.js';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "../components/layout/NavBar";
 import SearchBar from "../components/layout/SearchBar";
-import { StrictMode } from 'react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,17 +19,16 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   return (
-    <StrictMode>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      > 
-        <NavBar />
-        <SearchBar />
-        {children}
-      {/*  <BottomBar /> */}
-      </body>
-    </html>
-    </StrictMode>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <AppRouterCacheProvider>
+            <NavBar />
+            <SearchBar />
+            {children}
+          </AppRouterCacheProvider>
+        </body>
+      </html>
   );
 }

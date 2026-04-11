@@ -30,6 +30,29 @@ const CartBadge = styled(Badge)`
   }
 `;
 
+  const SkipLink = styled('a')({
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
+    '&:focus': {
+      position: 'fixed',
+      top: '10px',
+      left: '10px',
+      width: 'auto',
+      height: 'auto',
+      backgroundColor: '#fff',
+      color: '#000',
+      padding: '10px 20px',
+      zIndex: 9999,
+      borderRadius: '4px',
+      textDecoration: 'none',
+      boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+    },
+  });
+
 export default function NavBar() {
   const trigger = useScrollTrigger({ disableHysteresis: true });
   const router = useRouter();
@@ -75,28 +98,6 @@ export default function NavBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const SkipLink = styled('a')({
-    position: 'absolute',
-    left: '-10000px',
-    top: 'auto',
-    width: '1px',
-    height: '1px',
-    overflow: 'hidden',
-    '&:focus': {
-      position: 'fixed',
-      top: '10px',
-      left: '10px',
-      width: 'auto',
-      height: 'auto',
-      backgroundColor: '#fff',
-      color: '#000',
-      padding: '10px 20px',
-      zIndex: 9999,
-      borderRadius: '4px',
-      textDecoration: 'none',
-      boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-    },
-  });
 
   return (
     <>
