@@ -21,6 +21,7 @@ import { styled } from '@mui/material/styles';
 import Badge, { badgeClasses } from '@mui/material/Badge';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 const CartBadge = styled(Badge)`
   & .${badgeClasses.badge} {
@@ -30,6 +31,7 @@ const CartBadge = styled(Badge)`
 `;
 
 export default function NavBar() {
+  const trigger = useScrollTrigger({ disableHysteresis: true });
   const router = useRouter();
   const { i18n, t } = useTranslation();
   const pages = [t('layout.navbar_msg.promo'), "Credit", t('layout.navbar_msg.about'), t('layout.navbar_msg.mission')];
@@ -65,206 +67,219 @@ export default function NavBar() {
 
   const handleCloseNavMenu = (link) => {
     setAnchorElNav(null);
-  if (link && typeof link === 'string') {
-    router.push(link);
-  }
+    if (link && typeof link === 'string') {
+      router.push(link);
+    }
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-const SkipLink = styled('a')({
-  position: 'absolute',
-  left: '-10000px',
-  top: 'auto',
-  width: '1px',
-  height: '1px',
-  overflow: 'hidden',
-  '&:focus': {
-    position: 'fixed',
-    top: '10px',
-    left: '10px',
-    width: 'auto',
-    height: 'auto',
-    backgroundColor: '#fff',
-    color: '#000',
-    padding: '10px 20px',
-    zIndex: 9999,
-    borderRadius: '4px',
-    textDecoration: 'none',
-    boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-  },
-});
+  const SkipLink = styled('a')({
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
+    '&:focus': {
+      position: 'fixed',
+      top: '10px',
+      left: '10px',
+      width: 'auto',
+      height: 'auto',
+      backgroundColor: '#fff',
+      color: '#000',
+      padding: '10px 20px',
+      zIndex: 9999,
+      borderRadius: '4px',
+      textDecoration: 'none',
+      boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+    },
+  });
 
   return (
     <>
-    <SkipLink href="#special-offers">
-      {t('layout.accessibility.skip_to_content')}
-    </SkipLink>
-    <AppBar position="sticky" sx={{ backgroundColor: common.black }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdsClickOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component={Link} /*"a" */
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            ELECTRO
-          </Typography>
+      <SkipLink href="#special-offers">
+        {t('layout.accessibility.skip_to_content')}
+      </SkipLink>
+      <AppBar position="sticky" sx={{ backgroundColor: common.black }}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters sx={{
+            minHeight: {
+              md: trigger ? '50px' : '80px'
+            },
+            height: {
+              md: trigger ? '50px' : '80px'
+            },
+            transition: 'min-height 0.4s ease-in-out, height 0.4s ease-in-out',
+            '&.MuiToolbar-root': {
+              height: trigger ? '50px' : '80px'
+            }
+          }}>
+            <AdsClickOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              noWrap
+              component={Link} /*"a" */
+              href="/"
+              sx={{
+                transition: 'font-size 0.4s ease-in-out',
+                fontSize: trigger ? '1.1rem' : '1.25rem',
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              ELECTRO
+            </Typography>
 
-          <Box sx={{ flexGrow: { xs: 0, md: 1 } }} />
+            <Box sx={{ flexGrow: { xs: 0, md: 1 } }} />
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                disableScrollLock={true}
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{ display: { xs: 'block', md: 'none' } }}
+              >
+                {pages.map((page, index) => (
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(links[index])}>
+                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <AdsClickOutlinedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'none' },
+                flexGrow: 1,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              ELECTRO
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page, index) => (
+                <Button
+                  key={page}
+                  onClick={() => handleCloseNavMenu(links[index])}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
+            <IconButton onClick={handleOpenLangMenu}
               size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
+              aria-label="select language" // Description for screen readers
+              aria-controls={anchorElLang ? 'language-menu' : undefined}
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              aria-expanded={anchorElLang ? 'true' : undefined}
               color="inherit"
             >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              disableScrollLock={true}
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
-            >
-              {pages.map((page, index) => (
-                <MenuItem key={page} onClick={() => handleCloseNavMenu(links[index])}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdsClickOutlinedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            ELECTRO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page, index) => (
-              <Button
-                key={page}
-                onClick={() => handleCloseNavMenu(links[index])}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+              <Tooltip
+                title={t('layout.language.select')}
+                arrow // Adds the little triangle at the bottom
+                slots={{ transition: Zoom }}
+                placement="bottom"
               >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          <IconButton onClick={handleOpenLangMenu}
-            size="large"
-            aria-label="select language" // Description for screen readers
-            aria-controls={anchorElLang ? 'language-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={anchorElLang ? 'true' : undefined}
-            color="inherit"
-          >
-            <Tooltip
-              title={t('layout.language.select')}
-              arrow // Adds the little triangle at the bottom
-              slots={{ transition: Zoom }} // Use the correct prop for MUI v5
-              placement="bottom"
+                <LanguageOutlinedIcon
+                  sx={{
+                    my: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    mr: 2,
+                    transition: 'transform 0.1s ease-in-out',
+                    '&:active': {
+                      transform: 'scale(0.92)',
+                    },
+                  }}
+                />
+              </Tooltip>
+            </IconButton>
+            <Menu anchorEl={anchorElLang} // Link to the new state
+              open={Boolean(anchorElLang)}
+              onClose={handleCloseLangMenu}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
             >
-              <LanguageOutlinedIcon
-                sx={{
-                  my: 2,
-                  display: { xs: 'none', md: 'flex' },
-                  mr: 2,
-                  transition: 'transform 0.1s ease-in-out',
-                  '&:active': {
-                    transform: 'scale(0.92)', // Shrinks slightly when pressed
-                  },
-                }}
-              />
-            </Tooltip>
-          </IconButton>
-          <Menu anchorEl={anchorElLang} // Link to the new state
-            open={Boolean(anchorElLang)}
-            onClose={handleCloseLangMenu}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-          >
-            {languages.map((language) => (
-              <MenuItem key={language.code}
-                onClick={() => toggleLang(language.code)}
-                selected={i18n.language === language.code}>
-                <Typography sx={{ textAlign: 'center' }}>{language.label}</Typography>
-              </MenuItem>
-            ))}
-          </Menu>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Default user" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <CartBadge badgeContent={1} color="primary" overlap="circular" />
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              disableScrollLock={true}
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+              {languages.map((language) => (
+                <MenuItem key={language.code}
+                  onClick={() => toggleLang(language.code)}
+                  selected={i18n.language === language.code}>
+                  <Typography sx={{ textAlign: 'center' }}>{language.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Default user" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <CartBadge badgeContent={1} color="primary" overlap="circular" />
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                disableScrollLock={true}
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
     </>
   );
 }

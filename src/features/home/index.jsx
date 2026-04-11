@@ -11,6 +11,10 @@ import WatchIcon from '@mui/icons-material/WatchOutlined';
 import MediaCard from "@/features/home/MediaCard.jsx";
 import Grid from '@mui/material/Grid';
 
+import ScrollTop from "@/features/home/ScrollTopButton.jsx";
+import Fab from '@mui/material/Fab';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
 const setbackground = {
   backgroundImage: 'url("/background.jpg")',
   minHeight: '100vh',
@@ -25,7 +29,7 @@ export default function HomeComponent() {
 
   return (
     <div style={setbackground}>
-      <h1>{t('home.welcome_message')}</h1>
+      <h1 id="back-to-top-anchor">{t('home.welcome_message')}</h1>
       <div id={styles.categories}>
         <ListItemButton icon={<SmartphoneIcon sx={{ fontSize: '32px' }} />}>{t('home.categories.smartphone')}</ListItemButton>
 
@@ -74,10 +78,14 @@ export default function HomeComponent() {
             desc={t('home.promo_desc.4c9t7n')}
             image="/static/images/cards/tvcard2.jpg"
             href="/products/tv/rolsen-4c9t7n"
-            
           />
         </Grid>
       </Grid>
+      <ScrollTop>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
     </div>
   )
 }

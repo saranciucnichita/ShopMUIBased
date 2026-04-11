@@ -15,7 +15,7 @@ export default function MediaCard({ item, desc, image, href }) {
 
   return (
     <Card sx={{
-      maxWidth: 345, display: 'block', margin: '10px', padding: '10px', width: '100%', display: 'flex',
+      maxWidth: 345, margin: '10px', padding: '10px', display: 'flex',
       flexDirection: 'column',
       transition: 'transform 0.1s ease-in-out',
       '&:hover': {
@@ -26,11 +26,13 @@ export default function MediaCard({ item, desc, image, href }) {
       <CardActionArea
         component={Link}
         href={href}
+        sx={{ flexGrow: 1 }}
       >
         <CardMedia
-          sx={{ height: 240, backgroundSize: 'contain', marginTop: '10px' }}
+          component="img"
+          sx={{ height: 240, objectFit: 'contain', marginTop: '10px' }}
           image={image}
-          title="Product"
+          alt="TV on sale"
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="div">

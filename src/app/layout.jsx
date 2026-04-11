@@ -4,7 +4,6 @@ import '../i18n/i18n.js';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "../components/layout/NavBar";
-/* import BottomBar from "../components/layout/BottomBar"; */
 import SearchBar from "../components/layout/SearchBar";
 import { StrictMode } from 'react';
 
