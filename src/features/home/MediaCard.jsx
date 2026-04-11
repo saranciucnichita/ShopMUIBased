@@ -3,6 +3,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import '../../i18n/i18n';
@@ -36,7 +37,7 @@ export default function MediaCard({ item, desc, image, href }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" variant="contained">
+        <Button size="small" variant="outlined" startIcon={<AddShoppingCartIcon/>}>
           {t('home.promo_desc.cart')}
         </Button>
       </CardActions>
