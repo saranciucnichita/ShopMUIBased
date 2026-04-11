@@ -119,6 +119,7 @@ export default function PrimarySearchAppBar() {
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
+      disableScrollLock={true}
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
         vertical: 'top',

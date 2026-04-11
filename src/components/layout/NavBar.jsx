@@ -65,7 +65,7 @@ export default function NavBar() {
 
   const handleCloseNavMenu = (link) => {
     setAnchorElNav(null);
-  if (link) {
+  if (link && typeof link === 'string') {
     router.push(link);
   }
   };
@@ -101,7 +101,7 @@ const SkipLink = styled('a')({
     <SkipLink href="#special-offers">
       {t('layout.accessibility.skip_to_content')}
     </SkipLink>
-    <AppBar position="static" sx={{ backgroundColor: common.black }}>
+    <AppBar position="sticky" sx={{ backgroundColor: common.black }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdsClickOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -123,7 +123,7 @@ const SkipLink = styled('a')({
             ELECTRO
           </Typography>
 
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: { xs: 0, md: 1 } }} />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -138,6 +138,7 @@ const SkipLink = styled('a')({
             </IconButton>
             <Menu
               id="menu-appbar"
+              disableScrollLock={true}
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
@@ -152,8 +153,8 @@ const SkipLink = styled('a')({
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page, index) => (
+                <MenuItem key={page} onClick={() => handleCloseNavMenu(links[index])}>
                   <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
                 </MenuItem>
               ))}
@@ -164,7 +165,7 @@ const SkipLink = styled('a')({
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -240,6 +241,7 @@ const SkipLink = styled('a')({
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
+              disableScrollLock={true}
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
