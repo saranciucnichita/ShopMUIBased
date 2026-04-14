@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import EmailIcon from '@mui/icons-material/Email';
 
 const footerLinks = [
     { label: 'Promoții', url: '/promotions' },
@@ -51,7 +52,7 @@ export default function Footer() {
                         Abonați-vă la mesajele noastre
                     </Typography>
                     <Typography variant="caption" component="div" sx={{ mb: 1 }}>
-                        Rezumat lunar despre tehnologii noi
+                        Rezumat lunar despre tehnologii noi                         <EmailIcon sx={{ paddingLeft: 1 }}/>
                     </Typography>
                     <ThemeProvider theme={dark}>
                         <TextField fullWidth id="outlined-basic" label="Email" variant="outlined" sx={{ input: { color: 'common.white' } }} />

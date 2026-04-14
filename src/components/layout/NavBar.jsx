@@ -55,12 +55,17 @@ const CartBadge = styled(Badge)`
   });
 
 export default function NavBar() {
+
   const trigger = useScrollTrigger({ disableHysteresis: true });
   const router = useRouter();
   const { i18n, t } = useTranslation();
+  
   const pages = [t('layout.navbar_msg.promo'), "Credit", t('layout.navbar_msg.about'), t('layout.navbar_msg.mission')];
+
   const links = ['/promo', '/credit', '/about', '/mission'];
+
   const settings = [t('layout.settings.profile'), t('layout.settings.account'), t('layout.settings.cart'), t('layout.settings.logout')];
+
   const languages = [
     { label: t('layout.language.english'), code: 'en' },
     { label: t('layout.language.romanian'), code: 'ro' },
@@ -71,16 +76,12 @@ export default function NavBar() {
   };
 
   const [anchorElLang, setAnchorElLang] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenLangMenu = (event) => {
     setAnchorElLang(event.currentTarget);
   };
-
-  const handleCloseLangMenu = () => {
-    setAnchorElLang(null);
-  };
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -98,6 +99,10 @@ export default function NavBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleCloseLangMenu = () => {
+    setAnchorElLang(null);
   };
 
   return (
