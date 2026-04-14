@@ -51,7 +51,7 @@ export default function HomeComponent() {
         >{t('home.categories.smartwatches')}</ListItemButton>
       </div>
       <div id={styles.sales}>
-        <Image className={styles.banners} src="/sale.png" alt="Sale banner" width={1662} height={574}/>
+        <Image className={styles.banners} src="/sale.png" alt="Sale banner" width={1662} height={574} loading="eager"/>
         <Image className={styles.banners} src="/sale2.jpg" alt="Second sale banner" width={2894} height={1006}/>
       </div>
 
