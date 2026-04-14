@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import '../../i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 interface MediaCardProps {
   item: string;
@@ -19,6 +20,7 @@ interface MediaCardProps {
 
 export default function MediaCard({ item, desc, image, href }: MediaCardProps) {
   const { t } = useTranslation();
+  const mode = useMediaQuery('(prefers-color-scheme: dark)');
 
   return (
     <Card sx={{
@@ -29,6 +31,7 @@ export default function MediaCard({ item, desc, image, href }: MediaCardProps) {
         transition: 'transform 0.3s ease-in-out',
         transform: 'scale(1.05)',
       },
+      backgroundColor: mode === true ? 'grey.900' : 'background.paper',
     }}>
       <CardActionArea
         component={Link}
@@ -42,10 +45,10 @@ export default function MediaCard({ item, desc, image, href }: MediaCardProps) {
           alt={`TV on sale ${item}`}
         />
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" sx={{ color: mode === true ? 'white' : 'inherit' }}>
             {item}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body2" sx={{ color: mode === true ? 'white' : 'text.secondary' }}>
             {desc}
           </Typography>
         </CardContent>

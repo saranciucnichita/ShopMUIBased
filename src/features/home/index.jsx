@@ -16,20 +16,18 @@ import ScrollTop from "@/features/home/ScrollTopButton.tsx";
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-const setbackground = {
-  backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5)), url("/background.jpg")',
-  minHeight: '100vh',
-  backgroundSize: 'contain',
-  backgroundRepeat: 'repeat',
-  backgroundAttachment: 'fixed',
-  padding: '40px',
-};
-
 export default function HomeComponent() {
   const { t } = useTranslation();
 
   return (
-    <div style={setbackground}>
+    <div style={{
+      backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("/background.jpg")',
+      minHeight: '100vh',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'repeat',
+      backgroundAttachment: 'fixed',
+      padding: '40px'
+    }}>
       <h1 id="back-to-top-anchor">{t('home.welcome_message')}</h1>
       <div id={styles.categories}>
         <ListItemButton icon={<SmartphoneIcon sx={{ fontSize: '32px' }} />}>{t('home.categories.smartphone')}</ListItemButton>
@@ -51,8 +49,8 @@ export default function HomeComponent() {
         >{t('home.categories.smartwatches')}</ListItemButton>
       </div>
       <div id={styles.sales}>
-        <Image className={styles.banners} src="/sale.png" alt="Sale banner" width={1662} height={574} loading="eager"/>
-        <Image className={styles.banners} src="/sale2.jpg" alt="Second sale banner" width={2894} height={1006}/>
+        <Image className={styles.banners} src="/sale.png" alt="Sale banner" width={1662} height={574} loading="eager" />
+        <Image className={styles.banners} src="/sale2.jpg" alt="Second sale banner" width={2894} height={1006} />
       </div>
 
       <h1 id="special-offers">{t('home.special_offers')}</h1>
