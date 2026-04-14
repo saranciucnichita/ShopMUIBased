@@ -22,6 +22,7 @@ import Badge, { badgeClasses } from '@mui/material/Badge';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import '../../i18n/i18n.js'
 
 const CartBadge = styled(Badge)`
   & .${badgeClasses.badge} {
@@ -234,6 +235,7 @@ export default function NavBar() {
               </Tooltip>
             </IconButton>
             <Menu anchorEl={anchorElLang} // Link to the new state
+              disableScrollLock={true}
               open={Boolean(anchorElLang)}
               onClose={handleCloseLangMenu}
               anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}

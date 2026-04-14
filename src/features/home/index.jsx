@@ -17,7 +17,7 @@ import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const setbackground = {
-  backgroundImage: 'url("/background.jpg")',
+  backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5)), url("/background.jpg")',
   minHeight: '100vh',
   backgroundSize: 'contain',
   backgroundRepeat: 'repeat',
