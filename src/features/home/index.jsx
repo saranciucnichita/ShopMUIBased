@@ -8,11 +8,11 @@ import HeadsetIcon from '@mui/icons-material/Headset';
 import WashMashineIcon from '@mui/icons-material/LocalLaundryServiceOutlined';
 import TvIcon from '@mui/icons-material/TvOutlined';
 import WatchIcon from '@mui/icons-material/WatchOutlined';
-import MediaCard from "@/features/home/MediaCard.jsx";
+import MediaCard from "@/features/home/MediaCard.tsx";
 import Grid from '@mui/material/Grid';
 import Image from 'next/image'
 
-import ScrollTop from "@/features/home/ScrollTopButton.jsx";
+import ScrollTop from "@/features/home/ScrollTopButton.tsx";
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 

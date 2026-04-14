@@ -10,7 +10,14 @@ import '../../i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
-export default function MediaCard({ item, desc, image, href }) {
+interface MediaCardProps {
+  item: string;
+  desc: string;
+  image: string;
+  href: URL;
+}
+
+export default function MediaCard({ item, desc, image, href }: MediaCardProps) {
   const { t } = useTranslation();
 
   return (
@@ -32,7 +39,7 @@ export default function MediaCard({ item, desc, image, href }) {
           component="img"
           sx={{ height: 240, objectFit: 'contain', marginTop: '10px' }}
           image={image}
-          alt="TV on sale"
+          alt={`TV on sale ${item}`}
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="div">

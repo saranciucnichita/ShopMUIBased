@@ -1,17 +1,24 @@
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
+import { MouseEvent, ReactElement } from 'react';
 
-export default function ScrollTop({children}) {
+interface Props {
+  children?: ReactElement<unknown>;
+}
+
+export default function ScrollTop(props: Props) {
+  const { children } = props;
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 100,
   });
 
-  const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      '#back-to-top-anchor',
-    );
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    const anchor = (
+      (event.target as HTMLDivElement).ownerDocument || document
+    ).querySelector('#back-to-top-anchor');
 
     if (anchor) {
       anchor.scrollIntoView({
