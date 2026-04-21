@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, FormEvent } from 'react'
+import { useState, SubmitEvent } from 'react'
+import { useRouter } from 'next/navigation';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
@@ -64,6 +65,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function SignIn() {
+    const router = useRouter();
     const [emailError, setEmailError] = useState(false);
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordError, setPasswordError] = useState(false);
@@ -78,7 +80,7 @@ export default function SignIn() {
         setOpen(false);
     };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
         if (emailError || passwordError) {
             event.preventDefault();
             return;
@@ -206,7 +208,7 @@ export default function SignIn() {
                         <Button
                             fullWidth
                             variant="outlined"
-                            onClick={() => alert('Sign in with Google')}
+                            onClick={() => router.push('https://accounts.google.com/ServiceLogin')}
                             startIcon={<GoogleIcon />}
                         >
                             Sign in with Google
@@ -214,7 +216,7 @@ export default function SignIn() {
                         <Button
                             fullWidth
                             variant="outlined"
-                            onClick={() => alert('Sign in with Facebook')}
+                            onClick={() => router.push('https://www.facebook.com/login/')}
                             startIcon={<FacebookIcon />}
                         >
                             Sign in with Facebook

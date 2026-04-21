@@ -2,8 +2,12 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  cacheComponents: true,
   reactStrictMode: true,
-  poweredByHeader: false
+  poweredByHeader: false,
+  experimental: {
+    turbopackFileSystemCacheForDev: true
+  }
 };
 
 export default nextConfig;

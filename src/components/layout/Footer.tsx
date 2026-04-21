@@ -13,6 +13,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import EmailIcon from '@mui/icons-material/Email';
+import { useRouter } from 'next/navigation';
 
 const footerLinks = [
     { label: 'Promoții', url: '/promotions' },
@@ -29,23 +30,24 @@ const dark = createTheme({
 });
 
 export default function Footer() {
+    const router = useRouter();
     return (
         <>
             <Stack direction={{ xs: 'column', sm: 'row' }}
-                sx={{ justifyContent: "space-evenly", alignItems: "flex-start" }}>
+                sx={{ justifyContent: "space-evenly", alignItems: "flex-start", backgroundColor: "common.black" }}>
                 <Box sx={{ display: 'grid', color: 'inherit', justifyItems: 'start', gap: 2, p: { xs: 2, md: 4, lg: 6 } }}>
-                    <Typography variant="h5" component="div">
+                    <Typography variant="h5" component="div" sx={{color: "common.white"}}>
                         News
                     </Typography>
                     {footerLinks.map((item) => (
-                        <Link key={item.label} href={item.url} underline="hover" color="inherit">
+                        <Link key={item.label} href={item.url} underline="hover" color="common.white">
                             {item.label}
                         </Link>
                     ))}
                 </Box>
                 <Divider orientation="vertical" variant="middle" sx={{ borderColor: "common.white" }} flexItem />
                 <Box sx={{
-                    display: 'grid', color: 'inherit', p: { xs: 2, md: 4, lg: 6 },
+                    display: 'grid', color: 'common.white', p: { xs: 2, md: 4, lg: 6 },
                     gap: 1
                 }}>
                     <Typography variant="h5" component="div" sx={{ mb: 0 }}>
@@ -66,18 +68,19 @@ export default function Footer() {
                     py: 3,
                     px: 2,
                     mt: 'auto',
-                    color: 'inherit'
+                    backgroundColor: 'common.black',
+                    color: 'common.white'
                 }}
             >
-                <Container>
+                <Container sx={{backgroundColor: "common.black"}}>
                     <Stack direction="row" spacing={1} sx={{ justifyContent: 'center' }}>
-                        <IconButton color="inherit" aria-label="twitter">
+                        <IconButton color="inherit" aria-label="twitter" onClick={() => router.push('https://x.com/electroshop')}>
                             <TwitterIcon />
                         </IconButton>
-                        <IconButton color="inherit" aria-label="instagram">
+                        <IconButton color="inherit" aria-label="instagram" onClick={() => router.push('https://www.instagram.com/electroshop')}>
                             <InstagramIcon />
                         </IconButton>
-                        <IconButton color="inherit" aria-label="facebook">
+                        <IconButton color="inherit" aria-label="facebook" onClick={() => router.push('https://www.facebook.com/electroshop')}>
                             <FacebookIcon />
                         </IconButton>
                     </Stack>
@@ -89,7 +92,7 @@ export default function Footer() {
                         <Link color="inherit" href="/">
                             Electro
                         </Link>{' '}
-                        {new Date().getFullYear()}
+                        {'2026'}
                     </Typography>
                 </Container>
             </Box>

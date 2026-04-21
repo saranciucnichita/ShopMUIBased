@@ -101,6 +101,11 @@ export default function NavBar() {
     setAnchorElUser(null);
   };
 
+    const handleCloseUserMenuLink = () => {
+    setAnchorElUser(null);
+    router.push('/login');
+  };
+
   const handleCloseLangMenu = () => {
     setAnchorElLang(null);
   };
@@ -279,7 +284,7 @@ export default function NavBar() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting} onClick={handleCloseUserMenuLink}>
                     <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
                   </MenuItem>
                 ))}

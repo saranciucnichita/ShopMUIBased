@@ -1,6 +1,6 @@
 {
   "name": "shop-site",
-  "version": "0.10.0",
+  "version": "0.20.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,18 +10,18 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
-    "@base-ui/react": "~1.4.0",
+    "@base-ui/react": "~1.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@fontsource/roboto": "5.2.10",
     "@mui/icons-material": "~9.0.0",
     "@mui/material": "~9.0.0",
     "@mui/material-nextjs": "~9.0.0",
-    "i18next": "^26.0.4",
-    "next": "^16.2.3",
+    "i18next": "^26.0.6",
+    "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-i18next": "^17.0.2"
+    "react-i18next": "^17.0.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
@@ -31,8 +31,8 @@
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.3",
+    "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
-    "typescript": "~6.0.2"
+    "typescript": "~6.0.3"
   }
 }
