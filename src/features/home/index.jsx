@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import ListItemButton from "@/features/home/ListItemButton.jsx";
 import styles from './About.module.css';
@@ -10,14 +11,31 @@ import TvIcon from '@mui/icons-material/TvOutlined';
 import WatchIcon from '@mui/icons-material/WatchOutlined';
 import MediaCard from "@/features/home/MediaCard.tsx";
 import Grid from '@mui/material/Grid';
-import Image from 'next/image'
-
+import Image from 'next/image';
+import Skeleton from '@mui/material/Skeleton';
 import ScrollTop from "@/features/home/ScrollTopButton.tsx";
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 export default function HomeComponent() {
   const { t } = useTranslation();
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('https://tasteful-angel-9db2a6bb3b.strapiapp.com/api/items?populate=*');
+        const response = await res.json();
+        setItems(response.data || []);
+      } catch (error) {
+        console.error("Failed to fetch:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div style={{
@@ -54,37 +72,35 @@ export default function HomeComponent() {
       </div>
 
       <h1 id="special-offers">{t('home.special_offers')}</h1>
-      <Grid container spacing={2} sx={{ justifyContent: 'center', '& > .MuiGrid-root': { display: 'flex' } }}> {/* spacing adds a gap between cards */}
-        <Grid>
-          <MediaCard
-            item="TV PANASONIC 4LJBT3"
-            desc="Performant. Elegant. Brilliant."
-            image="/static/images/cards/tvcard1.jpg"
-            href="/products/tv/panasonic-4ljbt3"
-          />
-        </Grid>
-        <Grid>
-          <MediaCard
-            item="TV KONKA OXM9C3YT9"
-            desc={t('home.promo_desc.oxm9c3')}
-            image="/static/images/cards/tvcard3.jpg"
-            href="/products/tv/konka-oxm9c3yt9"
-          />
-        </Grid>
-        <Grid>
-          <MediaCard
-            item="TV ROLSEN 4C9T7N"
-            desc={t('home.promo_desc.4c9t7n')}
-            image="/static/images/cards/tvcard2.jpg"
-            href="/products/tv/rolsen-4c9t7n"
-          />
-        </Grid>
-      </Grid>
+      {
+        (!loading) ? (
+          <Grid container spacing={2} sx={{ justifyContent: 'center', '& > .MuiGrid-root': { display: 'flex' } }}> {/* spacing adds a gap between cards */}
+            {items && items.map((item) => {
+              const { Name, Brand, Model, Description, Image, documentId } = item;
+              const descText = Description?.[0]?.children?.[0]?.text || "";
+              const imageUrl = Image?.formats?.medium?.url || Image?.url;
+
+              return (
+                <Grid key={documentId} xs={12} sm={6} md={4}>
+                  <MediaCard
+                    title={`${Brand} ${Name} ${Model}`}
+                    desc={descText}
+                    image={imageUrl}
+                    href={`/products/${documentId}`}
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
+        ) : (
+          <Skeleton variant="rounded" animation="wave" width="100%" height={118} />
+        )
+      }
       <ScrollTop>
         <Fab size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
     </div>
-  )
+  );
 }

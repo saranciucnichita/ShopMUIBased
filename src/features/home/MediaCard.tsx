@@ -12,13 +12,13 @@ import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 interface MediaCardProps {
-  item: string;
+  title: string;
   desc: string;
   image: string;
   href: URL;
 }
 
-export default function MediaCard({ item, desc, image, href }: MediaCardProps) {
+export default function MediaCard({ title, desc, image, href }: MediaCardProps) {
   const { t } = useTranslation();
   const mode = useMediaQuery('(prefers-color-scheme: dark)');
 
@@ -42,11 +42,11 @@ export default function MediaCard({ item, desc, image, href }: MediaCardProps) {
           component="img"
           sx={{ height: 240, objectFit: 'contain', marginTop: '10px' }}
           image={image}
-          alt={`TV on sale ${item}`}
+          alt={`TV on sale ${title}`}
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="div" sx={{ color: mode === true ? 'white' : 'inherit' }}>
-            {item}
+            {title}
           </Typography>
           <Typography variant="body2" sx={{ color: mode === true ? 'white' : 'text.secondary' }}>
             {desc}
