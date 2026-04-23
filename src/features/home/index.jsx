@@ -29,7 +29,7 @@ export default function HomeComponent() {
         const response = await res.json();
         setItems(response.data || []);
       } catch (error) {
-        console.error("Failed to fetch:", error);
+        console.error("Failed to fetch: ", error);
       } finally {
         setLoading(false);
       }
@@ -73,20 +73,20 @@ export default function HomeComponent() {
 
       <h1 id="special-offers">{t('home.special_offers')}</h1>
       {
-        (!loading) ? (
+        (!loading && items === '[]') ? (
           <Grid container spacing={2} sx={{ justifyContent: 'center', '& > .MuiGrid-root': { display: 'flex' } }}> {/* spacing adds a gap between cards */}
             {items && items.map((item) => {
-              const { Name, Brand, Model, Description, Image, documentId } = item;
+              const { Name, Brand, Model, Description, Image, id } = item;
               const descText = Description?.[0]?.children?.[0]?.text || "";
               const imageUrl = Image?.formats?.medium?.url || Image?.url;
 
               return (
-                <Grid key={documentId} xs={12} sm={6} md={4}>
+                <Grid key={id} xs={12} sm={6} md={4}>
                   <MediaCard
                     title={`${Brand} ${Name} ${Model}`}
                     desc={descText}
                     image={imageUrl}
-                    href={`/products/${documentId}`}
+                    href={`/products/${id}`}
                   />
                 </Grid>
               );
