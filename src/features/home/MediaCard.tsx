@@ -10,6 +10,7 @@ import '../../i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import useStore from './zustand';
 
 interface MediaCardProps {
   title: string;
@@ -21,6 +22,7 @@ interface MediaCardProps {
 export default function MediaCard({ title, desc, image, href }: MediaCardProps) {
   const { t } = useTranslation();
   const mode = useMediaQuery('(prefers-color-scheme: dark)');
+  const incrItems = useStore(state => state.incrItems);
 
   return (
     <Card sx={{
@@ -54,7 +56,7 @@ export default function MediaCard({ title, desc, image, href }: MediaCardProps) 
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" variant="outlined" startIcon={<AddShoppingCartIcon/>}>
+        <Button size="small" variant="outlined" startIcon={<AddShoppingCartIcon/>} onClick={incrItems}>
           {t('home.promo_desc.cart')}
         </Button>
       </CardActions>

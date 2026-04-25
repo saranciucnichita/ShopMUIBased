@@ -73,7 +73,7 @@ export default function HomeComponent() {
 
       <h1 id="special-offers">{t('home.special_offers')}</h1>
       {
-        (!loading && items === '[]') ? (
+        (!loading && !(items === '[]')) ? (
           <Grid container spacing={2} sx={{ justifyContent: 'center', '& > .MuiGrid-root': { display: 'flex' } }}> {/* spacing adds a gap between cards */}
             {items && items.map((item) => {
               const { Name, Brand, Model, Description, Image, id } = item;

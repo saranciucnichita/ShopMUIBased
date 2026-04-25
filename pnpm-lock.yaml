@@ -30,8 +30,8 @@ importers:
         specifier: ~9.0.0
         version: 9.0.0(@emotion/cache@11.14.0)(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.5))(@types/react@19.2.14)(next@16.2.4(@babel/core@7.29.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)
       i18next:
-        specifier: ^26.0.6
-        version: 26.0.6(typescript@6.0.3)
+        specifier: ^26.0.8
+        version: 26.0.8(typescript@6.0.3)
       next:
         specifier: ^16.2.4
         version: 16.2.4(@babel/core@7.29.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -43,7 +43,10 @@ importers:
         version: 19.2.5(react@19.2.5)
       react-i18next:
         specifier: ^17.0.4
-        version: 17.0.4(i18next@26.0.6(typescript@6.0.3))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)
+        version: 17.0.4(i18next@26.0.8(typescript@6.0.3))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)
+      zustand:
+        specifier: ^5.0.12
+        version: 5.0.12(@types/react@19.2.14)(react@19.2.5)(use-sync-external-store@1.6.0(react@19.2.5))
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.4
@@ -1525,8 +1528,8 @@ packages:
   html-parse-stringify@3.0.1:
     resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
 
-  i18next@26.0.6:
-    resolution: {integrity: sha512-A4U6eCXodIbrhf8EarRurB9/4ebyaurH4+fu4gig9bqxmpSt+fCAFm/GpRQDcN1Xzu/LdFCx4nYHsnM1edIIbg==}
+  i18next@26.0.8:
+    resolution: {integrity: sha512-BRzLom0mhDhV9v0QhgUUHWQJuwFmnr1194xEcNLYD6ym8y8s542n4jXUvRLnhNTbh9PmpU6kGZamyuGHQMsGjw==}
     peerDependencies:
       typescript: ^5 || ^6
     peerDependenciesMeta:
@@ -2329,6 +2332,24 @@ packages:
 
   zod@4.3.6:
     resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
+
+  zustand@5.0.12:
+    resolution: {integrity: sha512-i77ae3aZq4dhMlRhJVCYgMLKuSiZAaUPAct2AksxQ+gOtimhGMdXljRT21P5BNpeT4kXlLIckvkPM029OljD7g==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      immer: '>=9.0.6'
+      react: '>=18.0.0'
+      use-sync-external-store: '>=1.2.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+      use-sync-external-store:
+        optional: true
 
 snapshots:
 
@@ -3896,9 +3917,7 @@ snapshots:
     dependencies:
       void-elements: 3.1.0
 
-  i18next@26.0.6(typescript@6.0.3):
-    dependencies:
-      '@babel/runtime': 7.29.2
+  i18next@26.0.8(typescript@6.0.3):
     optionalDependencies:
       typescript: 6.0.3
 
@@ -4343,11 +4362,11 @@ snapshots:
       react: 19.2.5
       scheduler: 0.27.0
 
-  react-i18next@17.0.4(i18next@26.0.6(typescript@6.0.3))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3):
+  react-i18next@17.0.4(i18next@26.0.8(typescript@6.0.3))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3):
     dependencies:
       '@babel/runtime': 7.29.2
       html-parse-stringify: 3.0.1
-      i18next: 26.0.6(typescript@6.0.3)
+      i18next: 26.0.8(typescript@6.0.3)
       react: 19.2.5
       use-sync-external-store: 1.6.0(react@19.2.5)
     optionalDependencies:
@@ -4793,3 +4812,9 @@ snapshots:
       zod: 4.3.6
 
   zod@4.3.6: {}
+
+  zustand@5.0.12(@types/react@19.2.14)(react@19.2.5)(use-sync-external-store@1.6.0(react@19.2.5)):
+    optionalDependencies:
+      '@types/react': 19.2.14
+      react: 19.2.5
+      use-sync-external-store: 1.6.0(react@19.2.5)

@@ -19,6 +19,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Button from '@mui/material/Button';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import useStore from '../../features/home/zustand';
 
 {/*Hide the Search button if search box is empty*/}
 const Search = styled('div')(({ theme }) => ({
@@ -72,7 +73,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {
   const { t } = useTranslation();
-
+  const state = useStore();
+  
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -138,7 +140,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show orders" color="inherit">
-          <Badge badgeContent={0} color="error">
+          <Badge badgeContent={state.toString()} color="error">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -186,7 +188,7 @@ export default function PrimarySearchAppBar() {
 
     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show orders" color="inherit">
-              <Badge badgeContent={0} color="error">
+              <Badge badgeContent={state.toString()} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
