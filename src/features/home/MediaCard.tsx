@@ -10,7 +10,7 @@ import '../../i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useStore from './zustand';
+import useStore from './LinkMediaCard';
 
 interface MediaCardProps {
   title: string;
