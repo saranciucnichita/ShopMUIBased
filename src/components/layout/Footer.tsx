@@ -35,7 +35,7 @@ export default function Footer() {
         <>
             <Stack direction={{ xs: 'column', sm: 'row' }}
                 sx={{ justifyContent: "space-evenly", alignItems: "flex-start", backgroundColor: "common.black" }}>
-                <Box sx={{ display: 'grid', color: 'inherit', justifyItems: 'start', gap: 2, p: { xs: 2, md: 4, lg: 6 } }}>
+                <Box sx={{ display: 'grid', color: 'inherit', justifyItems: 'start', gap: 2, p: { xs: 1, md: 2, lg: 4 } }}>
                     <Typography variant="h5" component="div" sx={{color: "common.white"}}>
                         News
                     </Typography>
@@ -47,7 +47,7 @@ export default function Footer() {
                 </Box>
                 <Divider orientation="vertical" variant="middle" sx={{ borderColor: "common.white" }} flexItem />
                 <Box sx={{
-                    display: 'grid', color: 'common.white', p: { xs: 2, md: 4, lg: 6 },
+                    display: 'grid', color: 'common.white', p: { xs: 1, md: 2, lg: 4 },
                     gap: 1
                 }}>
                     <Typography variant="h5" component="div" sx={{ mb: 0 }}>
@@ -65,7 +65,7 @@ export default function Footer() {
             <Box
                 component="footer"
                 sx={{
-                    py: 3,
+                    py: 2,
                     px: 2,
                     mt: 'auto',
                     backgroundColor: 'common.black',
