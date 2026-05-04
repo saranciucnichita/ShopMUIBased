@@ -16,6 +16,7 @@ import Skeleton from '@mui/material/Skeleton';
 import ScrollTop from "@/features/home/ScrollTopButton.tsx";
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Box from '@mui/material/Box';
 
 export default function HomeComponent() {
   const { t } = useTranslation();
@@ -44,28 +45,39 @@ export default function HomeComponent() {
       backgroundSize: 'contain',
       backgroundRepeat: 'repeat',
       backgroundAttachment: 'fixed',
-      padding: '40px'
+      padding: '40px',
     }}>
       <h1 id="back-to-top-anchor">{t('home.welcome_message')}</h1>
-      <div id={styles.categories}>
-        <ListItemButton icon={<SmartphoneIcon sx={{ fontSize: '32px' }} />}>{t('home.categories.smartphone')}</ListItemButton>
+      <Box component="section" sx={{
+        padding: '40px 100px',
+        width: '100%',
+        display: 'flex',
+        flexWrap: 'wrap',     /* Wrap to next line if screen is small */
+        gap: '15px',
+        justifyContent: 'center',
+        '@media (max-width: 600px)': {
+          padding: '0px',
+        },
+      }}>
+        <ListItemButton icon={<SmartphoneIcon />}>{t('home.categories.smartphone')}</ListItemButton>
 
         <ListItemButton
-          icon={<HeadsetIcon sx={{ fontSize: '32px' }} />}
+          icon={<HeadsetIcon />}
         >{t('home.categories.headphones')}</ListItemButton>
 
         <ListItemButton
-          icon={<WashMashineIcon sx={{ fontSize: '32px' }} />}
+          icon={<WashMashineIcon />}
         >{t('home.categories.washing_machines')}</ListItemButton>
 
         <ListItemButton
-          icon={<TvIcon sx={{ fontSize: '32px' }} />}
+          icon={<TvIcon />}
         >{t('home.categories.televisions')}</ListItemButton>
 
         <ListItemButton
           icon={<WatchIcon sx={{ fontSize: '32px' }} />}
         >{t('home.categories.smartwatches')}</ListItemButton>
-      </div>
+      </Box>
+
       <div id={styles.sales}>
         <Image className={styles.banners} src="/sale.png" alt="Sale banner" width={1662} height={574} loading="eager" />
         <Image className={styles.banners} src="/sale2.jpg" alt="Second sale banner" width={2894} height={1006} />

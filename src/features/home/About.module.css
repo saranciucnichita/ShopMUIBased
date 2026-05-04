@@ -1,11 +1,3 @@
-#categories {
-  padding: 40px 100px;
-  display: flex;
-  flex-wrap: wrap;     /* Wrap to next line if screen is small */
-  gap: 15px;
-  justify-content: center;
-}
-
 .banners {
   width: 100%;
   max-width: 500px;
