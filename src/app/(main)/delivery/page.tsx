@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ReactNode  } from 'react';
+import { useState, ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';

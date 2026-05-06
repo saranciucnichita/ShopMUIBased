@@ -24,7 +24,8 @@ export default function HomeComponent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    
+    const fetchData = async() => {
       try {
         const res = await fetch('https://tasteful-angel-9db2a6bb3b.strapiapp.com/api/items?populate=*');
         const response = await res.json();
