@@ -1,20 +1,19 @@
 "use client";
-import { useParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+
+import { use, useState, useEffect } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-export default function ProductPage() {
+export default function ProductPage({ params }) {
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
-    const params = useParams();
+    const itemid = use(params);
 
     useEffect(() => {
-        const fetchData = async() => {
-            const { id } = await params;
-            if (!id) return;
+        (async () => {
+            if (!itemid) return;
             try {
-                const res = await fetch(`https://tasteful-angel-9db2a6bb3b.strapiapp.com/api/items?filters[id][$eq]=${id}&populate=*`);
+                const res = await fetch(`https://tasteful-angel-9db2a6bb3b.strapiapp.com/api/items?filters[id][$eq]=${itemid.id}&populate=*`);
                 const response = await res.json();
                 setItem(response.data[0] || null);
             } catch (error) {
@@ -22,9 +21,8 @@ export default function ProductPage() {
             } finally {
                 setLoading(false);
             }
-        };
-        fetchData();
-    }, [params]);
+        })();
+    }, [itemid]);
 
     return (
         (!loading && item) ? (

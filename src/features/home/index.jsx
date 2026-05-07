@@ -20,23 +20,22 @@ import Box from '@mui/material/Box';
 
 export default function HomeComponent() {
   const { t } = useTranslation();
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     
-    const fetchData = async() => {
+    (async () => {
       try {
         const res = await fetch('https://tasteful-angel-9db2a6bb3b.strapiapp.com/api/items?populate=*');
         const response = await res.json();
-        setItems(response.data || []);
+        setItems(response.data || null);
       } catch (error) {
         console.error("Failed to fetch: ", error);
       } finally {
         setLoading(false);
       }
-    };
-    fetchData();
+    })();
   }, []);
 
   return (
@@ -86,7 +85,7 @@ export default function HomeComponent() {
 
       <h1 id="special-offers">{t('home.special_offers')}</h1>
       {
-        (!loading && !(items === '[]')) ? (
+        (!loading && (items !== null)) ? (
           <Grid container spacing={2} sx={{ justifyContent: 'center', '& > .MuiGrid-root': { display: 'flex' } }}> {/* spacing adds a gap between cards */}
             {items && items.map((item) => {
               const { Name, Brand, Model, Description, Image, id } = item;
