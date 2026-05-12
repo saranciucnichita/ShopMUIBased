@@ -7,7 +7,10 @@ const nextConfig = {
   poweredByHeader: false,
   experimental: {
     turbopackFileSystemCacheForDev: true
-  }
+  },
+  images: {
+    remotePatterns: [new URL('https://tasteful-angel-9db2a6bb3b.media.strapiapp.com/**')],
+  },
 };
 
 export default nextConfig;

@@ -47,7 +47,7 @@ export default function Footer() {
                 </Box>
                 <Divider orientation="vertical" variant="middle" sx={{ borderColor: "common.white" }} flexItem />
                 <Box sx={{
-                    display: 'grid', color: 'common.white', p: { xs: 1, md: 2, lg: 4 },
+                    display: 'grid', color: 'common.white', p: { xs: 1, md: 2, lg: 2 },
                     gap: 1
                 }}>
                     <Typography variant="h5" component="div" sx={{ mb: 0 }}>
