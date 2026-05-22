@@ -35,12 +35,12 @@ export default function Footer() {
         <>
             <Stack direction={{ xs: 'column', sm: 'row' }}
                 sx={{ justifyContent: "space-evenly", alignItems: "flex-start", backgroundColor: "common.black" }}>
-                <Box sx={{ display: 'grid', color: 'inherit', justifyItems: 'start', gap: 2, p: { xs: 1, md: 2, lg: 4 } }}>
-                    <Typography variant="h5" component="div" sx={{color: "common.white"}}>
+                <Box sx={{ display: 'grid', color: 'inherit', justifyItems: 'start', gap: 2, p: { xs: 1, md: 2, lg: 2 } }}>
+                    <Typography variant="h5" component="div" sx={{ color: "common.white" }}>
                         News
                     </Typography>
                     {footerLinks.map((item) => (
-                        <Link key={item.label} href={item.url} underline="hover" color="common.white">
+                        <Link key={item.label} href={item.url} underline="hover" color="common.white" variant="subtitle2">
                             {item.label}
                         </Link>
                     ))}
@@ -54,7 +54,7 @@ export default function Footer() {
                         Abonați-vă la mesajele noastre
                     </Typography>
                     <Typography variant="caption" component="div" sx={{ mb: 1 }}>
-                        Rezumat lunar despre tehnologii noi                         <EmailIcon sx={{ paddingLeft: 1 }}/>
+                        Rezumat lunar despre tehnologii noi                         <EmailIcon sx={{ paddingLeft: 1 }} />
                     </Typography>
                     <ThemeProvider theme={dark}>
                         <TextField fullWidth id="outlined-basic" label="Email" variant="outlined" sx={{ input: { color: 'common.white' } }} />
@@ -65,14 +65,14 @@ export default function Footer() {
             <Box
                 component="footer"
                 sx={{
-                    py: 2,
-                    px: 2,
+                    py: 1,
+                    px: 1,
                     mt: 'auto',
                     backgroundColor: 'common.black',
                     color: 'common.white'
                 }}
             >
-                <Container sx={{backgroundColor: "common.black"}}>
+                <Container sx={{ backgroundColor: "common.black" }}>
                     <Stack direction="row" spacing={1} sx={{ justifyContent: 'center' }}>
                         <IconButton color="inherit" aria-label="twitter" onClick={() => router.push('https://x.com/electroshop')}>
                             <TwitterIcon />
@@ -87,7 +87,8 @@ export default function Footer() {
                     <Typography variant="body1" align="center">
                         Electro pentru toți
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" align="center">
+                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}
+                        align="center">
                         {'Copyright © '}
                         <Link color="inherit" href="/">
                             Electro

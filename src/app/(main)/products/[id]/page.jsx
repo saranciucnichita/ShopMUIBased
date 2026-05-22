@@ -4,7 +4,7 @@ import { use, useState, useEffect } from 'react';
 
 import Image from 'next/image';
 import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
+import Skeleton from '@mui/material/Skeleton';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -121,7 +121,17 @@ export default function ProductPage({ params }) {
             </Container>
         ) : (
             <Box sx={{ display: 'flex', padding: '10px' }}>
-                <CircularProgress aria-label="Loading…" />
+                <Skeleton
+                    variant="rectangular"
+                    sx={{
+                        width: {
+                            xs: '100%', // Mobile
+                            sm: '80%',  // Tablets
+                            md: '60%',  // Desktop
+                        },
+                        height: 150
+                    }}
+                />
             </Box>
         )
     );
