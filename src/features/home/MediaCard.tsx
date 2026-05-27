@@ -1,9 +1,10 @@
 import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea'; 
+import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import '../../i18n/i18n';
@@ -23,6 +24,17 @@ export default function MediaCard({ title, desc, image, href }: MediaCardProps) 
   const { t } = useTranslation();
   const mode = useMediaQuery('(prefers-color-scheme: dark)');
   const incrItems = useStore(state => state.incrItems);
+  const decrItems = useStore(state => state.decrItems);
+  const count = useStore((state) => state.items);
+
+  const activeCard = useStore((state) => state.activeCard);
+  const setCard = useStore((state) => state.setCard);
+  const isCardActive = activeCard === title;
+
+  const handle = () => {
+    incrItems();
+    setCard(title);
+  };
 
   return (
     <Card sx={{
@@ -56,9 +68,13 @@ export default function MediaCard({ title, desc, image, href }: MediaCardProps) 
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" variant="outlined" startIcon={<AddShoppingCartIcon/>} onClick={incrItems}>
+        <Button size="small" variant="outlined" startIcon={<AddShoppingCartIcon />} onClick={handle}>
           {t('home.promo_desc.cart')}
         </Button>
+        {count > 0 && isCardActive && (<Button size="small" variant="outlined" startIcon={<BackspaceIcon />} color="error" onClick={decrItems}>
+          {t('home.promo_desc.rem_cart')}
+        </Button>
+        )}
       </CardActions>
     </Card>
   );
